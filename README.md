@@ -1,5 +1,4 @@
-# 
-
+# DIffusion-Based Statistical Characterization (DISC)
 This repository contains the implementation of DISC (Diffusion-Based Statistical Characterization) from our AISTATS Paper "Beyond Binary Out-of-Distribution Detection: Characterizing
 Distributional Shifts with Multi-Statistic Diffusion Trajectories" 
 
