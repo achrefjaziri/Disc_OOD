@@ -1,0 +1,73 @@
+{
+  "binary_auroc": {
+    "average": 0.8741898000000001,
+    "per_family": [
+      {
+        "auroc": 0.812039,
+        "dataset": "imagenet_a",
+        "family": "ImageNet-A",
+        "n_ood": 1000
+      },
+      {
+        "auroc": 0.8637119999999999,
+        "dataset": "imagenet_o",
+        "family": "ImageNet-O",
+        "n_ood": 1000
+      },
+      {
+        "auroc": 0.715249,
+        "dataset": "imagenet_c",
+        "family": "ImageNet-C",
+        "n_ood": 1000
+      },
+      {
+        "auroc": 0.980894,
+        "dataset": "cifar10",
+        "family": "CIFAR-10",
+        "n_ood": 1000
+      },
+      {
+        "auroc": 0.999055,
+        "dataset": "mnist",
+        "family": "MNIST",
+        "n_ood": 1000
+      }
+    ],
+    "score_direction": "higher_is_more_ood"
+  },
+  "clustering_accuracy": {
+    "mean": 0.5638,
+    "n_repeats": 1,
+    "std": 0.0
+  },
+  "datasets": {
+    "id_dataset": "imagenet_val",
+    "n_id": 1000,
+    "n_ood_by_dataset": {
+      "cifar10": 1000,
+      "imagenet_a": 1000,
+      "imagenet_c": 1000,
+      "imagenet_o": 1000,
+      "mnist": 1000
+    },
+    "ood_datasets": [
+      "imagenet_a",
+      "imagenet_o",
+      "imagenet_c",
+      "cifar10",
+      "mnist"
+    ],
+    "ood_families": {
+      "cifar10": "CIFAR-10",
+      "imagenet_a": "ImageNet-A",
+      "imagenet_c": "ImageNet-C",
+      "imagenet_o": "ImageNet-O",
+      "mnist": "MNIST"
+    }
+  },
+  "supervised_accuracy": {
+    "mean": 0.802,
+    "n_repeats": 1,
+    "std": 0.0
+  }
+}

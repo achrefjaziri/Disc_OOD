@@ -61,4 +61,3 @@ The evaluation script reports:
 Results are written under `outputs/results/` by default as
 `binary_auroc.csv`, `clustering_accuracy.csv`, `supervised_accuracy.csv`, and
 `summary.json`.
-# disc_odd

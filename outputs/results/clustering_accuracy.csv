@@ -1,0 +1,3 @@
+row_type,seed,accuracy,accuracy_mean,accuracy_std,n_samples,n_families
+run,42.0,0.5638,,,5000,5
+summary,,,0.5638,0.0,5000,5

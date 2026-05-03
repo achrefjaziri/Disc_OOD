@@ -1,0 +1,7 @@
+dataset,family,auroc,n_id,n_ood,fit_n_id,seed,score_direction
+imagenet_a,ImageNet-A,0.812039,1000,1000,1000,42,higher_is_more_ood
+imagenet_o,ImageNet-O,0.8637119999999999,1000,1000,1000,42,higher_is_more_ood
+imagenet_c,ImageNet-C,0.715249,1000,1000,1000,42,higher_is_more_ood
+cifar10,CIFAR-10,0.980894,1000,1000,1000,42,higher_is_more_ood
+mnist,MNIST,0.999055,1000,1000,1000,42,higher_is_more_ood
+average,average,0.8741898000000001,1000,5000,1000,42,higher_is_more_ood

@@ -1,0 +1,94 @@
+seed: 42
+device: auto
+
+paths:
+  output_dir: outputs
+  feature_dir: outputs/features
+  results_dir: outputs/results
+  evaluation_dir: outputs/results
+
+data:
+  imagenet_val_root: ${IMAGENET_VAL_ROOT}
+  imagenet_a_root: ${IMAGENET_A_ROOT}
+  imagenet_o_root: ${IMAGENET_O_ROOT}
+  imagenet_c_root: ${IMAGENET_C_ROOT}
+  cifar10_root: ${TORCHVISION_DATA_ROOT}
+  mnist_root: ${TORCHVISION_DATA_ROOT}
+  image_size: 64
+  batch_size: 32
+  num_workers: 4
+  max_samples_per_dataset: 1000
+  max_samples_per_class: null
+  seed: 42
+  normalization: minus_one_one
+  cifar10_split: test
+  cifar10_download: false
+  mnist_split: test
+  mnist_download: false
+
+diffusion:
+  backend: improved_diffusion
+  model_name_or_path:
+  checkpoint_path: ${IMAGENET64_CKPT}
+  scheduler: improved_diffusion_gaussian
+  prediction_type: epsilon
+  timesteps: [3000, 2842, 2684, 2526, 2368, 2211, 2053, 1895, 1737, 1579, 1421, 1263, 1105, 947, 789, 632, 474, 316, 158, 0]
+  num_inference_steps:
+  image_size: 64
+  mixed_precision: false
+  device: auto
+  cache_dir:
+  reconstruction_mode: full_reverse
+  model_args:
+    image_size: 64
+    num_channels: 128
+    num_res_blocks: 3
+    num_heads: 4
+    num_heads_upsample: -1
+    attention_resolutions: "16,8"
+    dropout: 0.0
+    learn_sigma: true
+    sigma_small: false
+    class_cond: false
+    diffusion_steps: 4000
+    noise_schedule: cosine
+    timestep_respacing: ""
+    use_kl: false
+    predict_xstart: false
+    rescale_timesteps: true
+    rescale_learned_sigmas: true
+    use_checkpoint: false
+    use_scale_shift_norm: true
+
+features:
+  mode: full_reverse
+  timesteps: [3000, 2842, 2684, 2526, 2368, 2211, 2053, 1895, 1737, 1579, 1421, 1263, 1105, 947, 789, 632, 474, 316, 158, 0]
+  comparison: orig_vs_recon
+  pixel_metrics: [mse, ssim, lpips]
+  texture:
+    enabled: true
+    nbins: 256
+    include_lbp: true
+    include_hog: true
+    include_intensity: true
+    include_dtcwt: true
+  local_complexity:
+    enabled: false
+    hull_points: 32
+    radius: 0.1
+    batch_size: 1
+
+evaluation:
+  id_dataset: imagenet_val
+  ood_datasets: [imagenet_a, imagenet_o, imagenet_c, cifar10, mnist]
+  scale_features: true
+  seeds: [42]
+  iforest:
+    train_fraction: 1.0
+    n_estimators: 200
+  kmeans:
+    n_init: 20
+  supervised:
+    test_size: 0.2
+    hidden_layer_sizes: [128, 64]
+    max_iter: 500
